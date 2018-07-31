@@ -25,7 +25,6 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -33,7 +32,6 @@ public class MainActivity extends AppCompatActivity{
     private final String TAG = "MainActivity";
     public static NoPreloadViewPager mViewPager;
     private ImageView backImg;
-//    private ArrayList<BannerModel> as;
     private Intent intent;
 
     private Timer timer;
@@ -92,6 +90,7 @@ public class MainActivity extends AppCompatActivity{
         changPlayView(0);
         intent = getIntent();
         playList = new ArrayList<>();
+
         if (playList.size() != 0){
             playList.clear();
             Logger.d("TestPlay","清空！");
@@ -134,7 +133,6 @@ public class MainActivity extends AppCompatActivity{
         }
     }
     private void autoBanner() {
-//        int index = playList.size()-1;
         autoCurrIndex = 0;
         final int index = 0;
         mViewPager.setOffscreenPageLimit(index);
@@ -208,25 +206,6 @@ public class MainActivity extends AppCompatActivity{
             }
         };
     }
-//    private void initData(){
-//        String base_url = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath() + "/";
-//        BannerModel bannerModel = new BannerModel(base_url + "5acqh6tjcumx.mp4","1");
-//        BannerModel bannerModel2 = new BannerModel(base_url + "8t7kmeu9gy50.jpg","0");
-//        BannerModel bannerModel3 = new BannerModel(base_url + "szrp31ah7dzi.mp4","1");
-//        BannerModel bannerModel4 = new BannerModel(base_url + "cat.jpg","0");
-//        if (playList.size() != 0){
-//            playList.clear();
-//        }
-//        playList.add(bannerModel);
-//        playList.add(bannerModel2);
-//        playList.add(bannerModel3);
-//        playList.add(bannerModel4);
-//        if (playList != null){
-//            for (int i=0;i<playList.size();i++){
-//                Logger.d("TestPlay",playList.get(i).getUri() + " -- " + playList.get(i).getType());
-//            }
-//        }
-//    }
     /**
      * 播放下一个
      */
@@ -259,47 +238,10 @@ public class MainActivity extends AppCompatActivity{
 
     private void initView() {
         if (playList != null && playList.size() > 0) {
-//            videoView = (VideoView) findViewById(R.id.videoView1);
-//            videoView.setMediaController(new MediaController(this));
-//            videoView.setOnCompletionListener(this);
-//            videoView.setOnErrorListener(this);
-//            videoView.setVideoURI(Uri.parse(as.get(0).getUri()));
-//            videoView.start();
             autoBanner();
         }
     }
-//    @Override
-//    public void onCompletion(MediaPlayer arg0) {
-//        //循环播放处理
-//        Log.d(TAG, "onCompletion");
-//        i++;
-//        if(i<as.size()){
-//            videoView.setVideoURI(Uri.parse((as.get(i).getUri())));
-//            videoView.start();
-//        }else if(i == as.size()){
-//            i = 0;
-//            videoView.setVideoURI(Uri.parse((as.get(i).getUri())));
-//            videoView.start();
-//        }
-//    }
-//
-//    @Override
-//    public boolean onError(MediaPlayer mediaPlayer, int arg1, int arg2) {
-//        Log.d(TAG, "onError");
-//        mediaPlayer.pause();
-//        mediaPlayer.stop();
-//        finish();
-//        return false;
-//    }
-//
-//    @Override
-//    protected void onStop() {
-//        Log.d(TAG, "onStop");
-//        if (videoView != null){
-//            videoView.pause();
-//        }
-//        super.onStop();
-//    }
+
 
     //订阅方法，当接收到事件的时候，会调用该方法
     @Subscribe(threadMode = ThreadMode.MAIN)
